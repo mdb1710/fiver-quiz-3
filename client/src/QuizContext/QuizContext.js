@@ -4,12 +4,15 @@ const QuizContext = React.createContext({
   testName: "",
   questions: [],
   questionNumber: null,
-  totalYes: 0,
-  totalNo: 0,
+  totalDreamer: 0,
+  totalAction: 0,
+  totalSelf: 0,
 
   display: true,
   confirmAnswer: () => {},
-  correctAnswers: []
+  dreamerAnswers: [],
+  actionAnswers: [],
+  selfAnswers: []
 });
 
 export default QuizContext;

@@ -7,8 +7,9 @@ import "./Questions.css";
 const Questions = () => {
   const value = useContext(QuizContext);
 
-  const [totalYes, setTotalYes] = useState(0);
-  const [totalNo, setTotalNo] = useState(0);
+  const [totalDreamer, setTotalDreamer] = useState(0);
+  const [totalAction, setTotalAction] = useState(0);
+  const [totalSelf, setTotalSelf] = useState(0);
 
   const [answered, setAnswered] = useState(false);
 
@@ -17,23 +18,17 @@ const Questions = () => {
     let checkedNumber = e.target.id - 1;
 
     console.log(checkedAnswer, "was clicked - is it right?");
-    if (checkedAnswer === value.correctAnswers[checkedNumber]) {
-      if (checkedNumber < 5) {
-        setTotalYes(totalYes + 2);
-        value.totalYes = totalYes;
-        console.log("You got it right!");
-        console.log(totalYes, value.totalYes);
-      } else {
-        setTotalYes(totalYes + 1);
-        value.totalYes = totalYes;
-        console.log("You got it right!");
-        console.log(totalYes, value.totalYes);
-      }
+    if (checkedAnswer.charAt(0) === value.dreamerAnswers[checkedNumber]) {
+      value.totalDreamer = totalDreamer;
+      setTotalDreamer(totalDreamer + 3);
+      console.log(totalDreamer);
+    } else if (checkedAnswer.charAt(0) === value.actionAnswers[checkedNumber]) {
+      setTotalAction(totalAction + 3);
+      value.totalAction = totalAction;
+      console.log(totalAction);
     } else {
-      setTotalNo(totalNo + 1);
-      value.totalNo = totalNo;
-      console.log("You got it No");
-      console.log(totalNo, value.totalNo);
+      setTotalSelf(totalSelf + 1);
+      console.log(totalSelf);
     }
     setAnswered(true);
     value.answered = answered;

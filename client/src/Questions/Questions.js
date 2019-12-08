@@ -16,20 +16,36 @@ const Questions = () => {
   const handleCheckAnswer = e => {
     let checkedAnswer = e.target.value;
     let checkedNumber = e.target.id - 1;
+    let letter = checkedAnswer.charAt(0).toLowerCase();
 
-    console.log(checkedAnswer, "was clicked - is it right?");
-    if (checkedAnswer.charAt(0) === value.dreamerAnswers[checkedNumber]) {
-      value.totalDreamer = totalDreamer;
+    console.log(checkedAnswer, "was clicked - is it right?", letter);
+    console.log(checkedNumber, totalDreamer, totalAction, totalSelf);
+
+    if (letter === "b") {
       setTotalDreamer(totalDreamer + 3);
-      console.log(totalDreamer);
-    } else if (checkedAnswer.charAt(0) === value.actionAnswers[checkedNumber]) {
-      setTotalAction(totalAction + 3);
-      value.totalAction = totalAction;
-      console.log(totalAction);
-    } else {
+      value.dreamerAnswers.push(letter);
+      console.log(value.dreamerAnswers, totalDreamer);
+    } else if (letter === "a") {
       setTotalSelf(totalSelf + 1);
-      console.log(totalSelf);
+      value.selfAnswers.push(letter);
+      console.log(value.selfAnswers, totalSelf);
+    } else {
+      setTotalAction(totalAction + 2);
+      value.actionAnswers.push(letter);
+      console.log(value.actionAnswers, totalAction);
     }
+    // if (checkedAnswer.charAt(0) === value.dreamerAnswers[checkedNumber]) {
+    //   value.totalDreamer = totalDreamer;
+    //   setTotalDreamer(totalDreamer + 3);
+    //   console.log(totalDreamer);
+    // } else if (checkedAnswer.charAt(0) === value.actionAnswers[checkedNumber]) {
+    //   setTotalAction(totalAction + 3);
+    //   value.totalAction = totalAction;
+    //   console.log(totalAction);
+    // } else {
+    //   setTotalSelf(totalSelf + 1);
+    //   console.log(totalSelf);
+    // }
     setAnswered(true);
     value.answered = answered;
   };
@@ -42,7 +58,7 @@ const Questions = () => {
       return (
         <div key={index} id={qNumber}>
           <h3 className="question my-4">
-            {qNumber}. {q.name}?
+            {qNumber}. {q.name}
           </h3>
           <form>
             <div className="input-group justify-content-center">

@@ -12,10 +12,8 @@ import "./App.css";
 
 const App = () => {
   const bbAnswers = testQuestions.map(answer => {
-    return answer.correctAnswer;
+    return answer.dreamerAnswers;
   });
-
-  const logoImage = require("./assets/eldercare-logo-transparent-bg-2.png");
 
   console.log(bbAnswers);
 
@@ -23,9 +21,13 @@ const App = () => {
     houseGuest: "",
     questions: [],
     questionNumber: null,
-    totalRight: "",
-    totalWrong: "",
+    totalDreamer: 0,
+    totalAction: 0,
+    totalSelf: 0,
     correctAnswers: bbAnswers,
+    dreamerAnswers: [],
+    actionAnswers: [],
+    selfAnswers: [],
     time: null,
     display: true
   };
@@ -37,9 +39,7 @@ const App = () => {
           Minimalist Quiz
         </h1>
       </header>
-      <div className="logo-image">
-        <img src={logoImage} alt="Eldercare logo" />
-      </div>
+
       <main>
         <QuizContext.Provider value={contextValue}>
           <Route exact path="/" component={Homepage} />

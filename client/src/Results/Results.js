@@ -10,23 +10,19 @@ const Results = () => {
   const [status, setStatus] = useState("");
 
   const checkStatus = () => {
-    let score = value.totalYes - value.totalNo;
+    let answers = value.userAnswers;
     switch (true) {
-      case score > 11:
+      case value.dreamerAnswers.length > 3:
         setStatus(
           "You are highly functionally independent. However, depending on your age and health status, consider preparing for the future as soon as possible. You can start by talking with your family members about your future care. Because longterm care can be costly, advice from your accountant and a geriatric attorney would be advisable."
         );
         break;
-      case score > 8:
+      case value.selfAnswers > 3:
         setStatus(
           "You may not need higher levels of assistance on a regular basis right now. However, you could use some assistance in some aspects of your life on an intermittent basis, perhaps with the assistance of family or friends. Consider remote home care, or adult daycare as well, where assistance can be provided for most of the day"
         );
         break;
-      case score > 6:
-        setStatus(
-          "You might consider independent care where limited health services can be provided, as well as making your lifestyle much easier to handle. Another recommended could be that a close family member should move in with you. Consider remote home care, or adult daycare as well, where assistance can be provided for most of the day"
-        );
-        break;
+
       default:
         setStatus(
           "You may need to consider a nursing care facility. With your limited ability to carry on your ADLs, full time nursing care may be the best option."
@@ -40,7 +36,7 @@ const Results = () => {
       <div className="quiz-results justify-context-center p-20">
         <h4 className="mb-30 mt-30">Let's see how you did {value.testName}</h4>
         <p className="text-success bg-light h-50">
-          Your score is {value.totalYes}
+          Your answers were {value.userAnswers}
         </p>
         <button onClick={checkStatus}>See Your Status</button>
         <ResultMeter />

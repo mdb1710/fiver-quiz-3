@@ -7,7 +7,7 @@ const QuizContext = React.createContext({
   totalDreamer: 0,
   totalAction: 0,
   totalSelf: 0,
-
+  userAnswers: [],
   display: true,
   confirmAnswer: () => {},
   dreamerAnswers: [],

@@ -6,17 +6,9 @@ import Results from "./Results/Results";
 
 import QuizContext from "./QuizContext/QuizContext";
 
-import testQuestions from "./TestQuestions";
-
 import "./App.css";
 
 const App = () => {
-  const bbAnswers = testQuestions.map(answer => {
-    return answer.dreamerAnswers;
-  });
-
-  console.log(bbAnswers);
-
   const contextValue = {
     houseGuest: "",
     questions: [],
@@ -24,10 +16,11 @@ const App = () => {
     totalDreamer: 0,
     totalAction: 0,
     totalSelf: 0,
-    correctAnswers: bbAnswers,
+
     dreamerAnswers: [],
     actionAnswers: [],
     selfAnswers: [],
+    userAnswers: [],
     time: null,
     display: true
   };

@@ -17,9 +17,15 @@ const Questions = () => {
     let checkedAnswer = e.target.value;
     let checkedNumber = e.target.id - 1;
     let letter = checkedAnswer.charAt(0).toLowerCase();
-
+    value.userAnswers.push(letter);
     console.log(checkedAnswer, "was clicked - is it right?", letter);
-    console.log(checkedNumber, totalDreamer, totalAction, totalSelf);
+    console.log(
+      checkedNumber,
+      value.userAnswers,
+      totalDreamer,
+      totalAction,
+      totalSelf
+    );
 
     if (letter === "b") {
       setTotalDreamer(totalDreamer + 3);

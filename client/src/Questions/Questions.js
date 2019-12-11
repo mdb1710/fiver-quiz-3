@@ -40,18 +40,7 @@ const Questions = () => {
       value.actionAnswers.push(letter);
       console.log(value.actionAnswers, totalAction);
     }
-    // if (checkedAnswer.charAt(0) === value.dreamerAnswers[checkedNumber]) {
-    //   value.totalDreamer = totalDreamer;
-    //   setTotalDreamer(totalDreamer + 3);
-    //   console.log(totalDreamer);
-    // } else if (checkedAnswer.charAt(0) === value.actionAnswers[checkedNumber]) {
-    //   setTotalAction(totalAction + 3);
-    //   value.totalAction = totalAction;
-    //   console.log(totalAction);
-    // } else {
-    //   setTotalSelf(totalSelf + 1);
-    //   console.log(totalSelf);
-    // }
+
     setAnswered(true);
     value.answered = answered;
   };

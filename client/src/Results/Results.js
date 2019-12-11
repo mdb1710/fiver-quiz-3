@@ -2,7 +2,9 @@ import React, { useContext, useState } from "react";
 import { withRouter } from "react-router";
 import QuizContext from "../QuizContext/QuizContext";
 import { Link } from "react-router-dom";
-import ResultMeter from "../Meter/ResultMeter";
+
+import { FacebookShareButton, TwitterShareButton } from "react-share";
+import { FacebookIcon, TwitterIcon } from "react-share";
 import "./Results.css";
 
 const Results = () => {
@@ -12,21 +14,15 @@ const Results = () => {
   const checkStatus = () => {
     let answers = value.userAnswers;
     switch (true) {
-      case value.dreamerAnswers.length > 3:
-        setStatus(
-          "You are highly functionally independent. However, depending on your age and health status, consider preparing for the future as soon as possible. You can start by talking with your family members about your future care. Because longterm care can be costly, advice from your accountant and a geriatric attorney would be advisable."
-        );
+      case answers[3] === "b":
+        setStatus("You are a dreamer");
         break;
-      case value.selfAnswers > 3:
-        setStatus(
-          "You may not need higher levels of assistance on a regular basis right now. However, you could use some assistance in some aspects of your life on an intermittent basis, perhaps with the assistance of family or friends. Consider remote home care, or adult daycare as well, where assistance can be provided for most of the day"
-        );
+      case answers[3] > "a":
+        setStatus("You are self absorbed");
         break;
 
       default:
-        setStatus(
-          "You may need to consider a nursing care facility. With your limited ability to carry on your ADLs, full time nursing care may be the best option."
-        );
+        setStatus("You ");
         break;
     }
   };
@@ -39,17 +35,16 @@ const Results = () => {
           Your answers were {value.userAnswers}
         </p>
         <button onClick={checkStatus}>See Your Status</button>
-        <ResultMeter />
+
         <div className="status-display">{status}</div>
-        <div className="more-info">
-          <h4>
-            If you would like more information on these results, check out our{" "}
-            <span>
-              <a href="http://www.Eldercarechannel.com">website</a>
-            </span>{" "}
-            or call 636-535-1180
-          </h4>
+        <div className="status-share">
+          <h4>Share Your Status With Others</h4>
+          <FacebookIcon size={32} round={true} />
+          <FacebookShareButton quote={status} hashtag={"#minimalistquiz"} />
+          <TwitterIcon size={32} round={true} />
+          <TwitterShareButton />
         </div>
+
         <Link to="/quiz">
           <button className="my-3">Try Again</button>
         </Link>

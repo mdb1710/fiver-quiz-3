@@ -11,6 +11,8 @@ const Results = () => {
   const value = useContext(QuizContext);
   const [status, setStatus] = useState("");
 
+  const shareUrl = "https://www.google.com";
+
   const checkStatus = () => {
     let answers = value.userAnswers;
     switch (true) {
@@ -39,10 +41,18 @@ const Results = () => {
         <div className="status-display">{status}</div>
         <div className="status-share">
           <h4>Share Your Status With Others</h4>
-          <FacebookIcon size={32} round={true} />
-          <FacebookShareButton quote={status} hashtag={"#minimalistquiz"} />
-          <TwitterIcon size={32} round={true} />
-          <TwitterShareButton />
+
+          <FacebookShareButton
+            url={shareUrl}
+            quote={status}
+            hashtag={"#minimalistquiz"}
+          >
+            <FacebookIcon size={32} round={true} /> Share on Facebook
+          </FacebookShareButton>
+
+          <TwitterShareButton url={shareUrl} quote={status}>
+            <TwitterIcon size={32} round={true} /> Share on Twitter
+          </TwitterShareButton>
         </div>
 
         <Link to="/quiz">
